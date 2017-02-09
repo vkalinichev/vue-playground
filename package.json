@@ -1,0 +1,35 @@
+{
+  "name": "vue-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "start": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js"
+  },
+  "repository": {
+    "url": "https://github.com/vkalinichev/vue-playground.git",
+    "type": "git"
+  },
+  "author": "Vladimir Kalinichev <wrumly@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.1.10"
+  },
+  "devDependencies": {
+    "@webpack-blocks/babel6": "^0.4.0",
+    "@webpack-blocks/css-modules": "^0.4.0",
+    "@webpack-blocks/dev-server2": "^0.4.0",
+    "@webpack-blocks/postcss": "^0.4.0",
+    "@webpack-blocks/webpack2": "^0.4.0",
+    "autoprefixer": "^6.7.2",
+    "babel": "^6.5.2",
+    "babel-preset-latest": "^6.22.0",
+    "eslint": "^3.15.0",
+    "html-webpack-plugin": "^2.28.0",
+    "open-browser-webpack-plugin": "^0.0.3",
+    "uniq-port": "^1.0.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  }
+}
