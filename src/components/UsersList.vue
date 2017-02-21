@@ -10,29 +10,25 @@
 <script>
     import Vue from 'vue'
     import User from './UserItem.vue'
+    import Component from 'vue-class-component'
 
-    export default {
-        name: 'UsersList',
-
+    @Component({
         components: {
             'user-item': User
-        },
-        data() {
-            return {
-                users: []
-            }
-        },
+        }
+    })
+    export default class UsersList extends Vue {
 
-        created: function () {
+        users = []
+
+        created() {
             this.fetchData()
-        },
+        }
 
-        methods: {
-            fetchData: function () {
-                fetch( 'https://jsonplaceholder.typicode.com/users' )
-                    .then( res => res.json() )
-                    .then( res => this.users = res )
-            }
+        fetchData() {
+            fetch( 'https://jsonplaceholder.typicode.com/users' )
+                .then( res => res.json() )
+                .then( res => this.users = res )
         }
     }
 </script>

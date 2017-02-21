@@ -1,5 +1,9 @@
 {
-  "presets": [
-    [ "latest", { "modules": false } ]
-  ]
+    "presets": [
+        [ "latest", { "modules": false } ]
+    ],
+    "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties"
+    ]
 }
