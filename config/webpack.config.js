@@ -1,7 +1,6 @@
 const {
     addPlugins,
     createConfig,
-    customConfig,
     defineConstants,
     env,
     entryPoint,
@@ -15,6 +14,7 @@ const babel = require( '@webpack-blocks/babel6' )
 const autoprefixer = require( 'autoprefixer' )
 const plugins = require( './webpack.plugins.js' )
 const devServerConfig = require( './webpack.dev-server.config' )
+const myVueLoader = require( './my-vue-loader' )
 
 module.exports = createConfig( [
     entryPoint( './src/index.js' ),
@@ -24,6 +24,7 @@ module.exports = createConfig( [
     defineConstants( {
         'process.env.NODE_ENV': process.env.NODE_ENV
     } ),
+    myVueLoader(),
     env( 'development', [
         cssModules( { localIdentName: '[name]__[local]' }),
         devServer( devServerConfig ),
@@ -36,12 +37,5 @@ module.exports = createConfig( [
             autoprefixer( { browsers: [ 'last 2 versions' ] } )
         ] ),
         addPlugins( plugins.productionPlugins )
-    ] ),
-    customConfig( {
-        resolve: {
-            alias: {
-                'vue$': 'vue/dist/vue.common.js'
-            }
-        }
-    } )
+    ] )
 ] )

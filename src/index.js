@@ -1,10 +1,11 @@
 import Vue from 'vue'
+import App from './components/App.vue'
+import router from './router/router.js'
 
-const app = window.app = new Vue({
-    el: '.app',
-    data: {
-        message: 'Vue.js@2 on Webpack@2 works!'
-    }
+Vue.component( 'App', App )
+
+new Vue({
+    el: '#app',
+    router: router,
+    template: '<App/>'
 })
-
-console.log( app );
