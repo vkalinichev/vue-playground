@@ -8,6 +8,9 @@ import User from '../components/UserItem.vue'
 Vue.use( Router )
 
 export default new Router( {
+
+    linkActiveClass: 'active',
+
     routes: [
         { path: '/', name: 'Index', component: Index },
         { path: '/users', name: 'UsersList', component: UsersList },

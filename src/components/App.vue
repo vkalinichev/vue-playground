@@ -3,7 +3,7 @@
         <header>
             <h1>Simple Vue-app example</h1>
             <menu>
-                <router-link to="/">Home</router-link>
+                <router-link class="menu-link" to="/" exact>Home</router-link>
                 <router-link to="/users">Users</router-link>
             </menu>
         </header>
@@ -28,5 +28,9 @@
 
     h1, h2, h3, h4, h5, h6 {
         font-weight: 400;
+    }
+
+    .active {
+        color: red;
     }
 </style>
