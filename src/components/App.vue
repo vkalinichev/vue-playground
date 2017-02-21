@@ -7,12 +7,34 @@
                 <router-link to="/users">Users</router-link>
             </menu>
         </header>
+        <div>
+            Counter: {{ count }}
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
         <router-view/>
     </div>
 </template>
 
 <script>
-    export default {}
+    import Vue from 'vue'
+    import Component from 'vue-class-component'
+
+    @Component
+    export default class App extends Vue {
+
+        get count() {
+            return this.$store.state.count
+        }
+
+        increment() {
+            this.$store.commit( 'increment' )
+        }
+
+        decrement() {
+            this.$store.commit( 'decrement' )
+        }
+    }
 </script>
 
 <style>
