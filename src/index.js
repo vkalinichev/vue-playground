@@ -1,13 +1,13 @@
 import Vue from 'vue'
-import App from './components/App.vue'
+import Root from './Root.vue'
 import router from './router/router.js'
 import store from './store/store'
 
-Vue.component( 'App', App )
+Vue.component( 'Root', Root )
 
 new Vue({
     el: '#app',
     router,
     store,
-    template: '<App/>'
+    template: '<Root/>'
 })

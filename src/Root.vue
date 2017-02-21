@@ -21,7 +21,7 @@
     import Component from 'vue-class-component'
 
     @Component
-    export default class App extends Vue {
+    export default class Root extends Vue {
 
         get count() {
             return this.$store.state.count
