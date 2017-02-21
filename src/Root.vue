@@ -19,6 +19,7 @@
 <script>
     import Vue from 'vue'
     import Component from 'vue-class-component'
+    import { increment, decrement } from './constants/mutations'
 
     @Component
     export default class Root extends Vue {
@@ -28,11 +29,11 @@
         }
 
         increment() {
-            this.$store.commit( 'increment' )
+            this.$store.commit( increment )
         }
 
         decrement() {
-            this.$store.commit( 'decrement' )
+            this.$store.commit( decrement )
         }
     }
 </script>
