@@ -13,6 +13,7 @@
     import Component from 'vue-class-component'
 
     @Component({
+        name: 'UsersList',
         components: {
             'user-item': User
         }
