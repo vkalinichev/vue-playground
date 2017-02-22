@@ -4,10 +4,11 @@ import { increment, decrement } from '../constants/mutations'
 
 Vue.use( Vuex )
 
-const store = new Vuex.Store({
+export default ( locales ) => new Vuex.Store({
 
     state: {
-        count: 0
+        count: 0,
+        locales
     },
 
     mutations: {
@@ -16,5 +17,3 @@ const store = new Vuex.Store({
     }
 
 })
-
-export default store

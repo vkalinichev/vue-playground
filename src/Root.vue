@@ -1,10 +1,11 @@
 <template>
     <div>
         <header>
-            <h1>Simple Vue-app example</h1>
+            <h1>{{ $t( 'app.title' ) }} </h1>
             <menu>
                 <router-link class="menu-link" to="/" exact>Home</router-link>
                 <router-link to="/users">Users</router-link>
+                <router-link to="/settings">Settings</router-link>
             </menu>
         </header>
         <div>
