@@ -3,7 +3,7 @@ module.exports = function myVueLoader() {
     return () => ({
 
         module: {
-            rules: [ {
+            loaders: [ {
                 test: /\.vue$/,
                 loader: 'vue-loader'
             } ]
