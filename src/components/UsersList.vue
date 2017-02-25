@@ -1,35 +1,71 @@
 <template>
     <div>
         <h2>Users list</h2>
-        <ul>
-            <user-item v-for="user in users" :user="user"/>
-        </ul>
+        <div class="container">
+            <preloader v-if="loading" class="preloader"/>
+            <ul v-else class="list">
+                <user-item v-for="user in users" :user="user"/>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue'
     import User from './UserItem.vue'
+    import Preloader from './Preloader.vue'
     import Component from 'vue-class-component'
+
+
+    import {
+        FETCH_USERS,
+        FETCH_USERS_COMPLETED,
+        FETCH_USERS_ERROR,
+        FETCH_USERS_REQUEST
+    } from '../constants/actions'
 
     @Component({
         name: 'UsersList',
         components: {
-            'user-item': User
+            'user-item': User,
+            'preloader': Preloader
         }
     })
     export default class UsersList extends Vue {
 
-        users = []
-
-        created() {
-            this.fetchData()
+        get users() {
+            return this.$store.state.users.items
+        }
+        get loading() {
+            return this.$store.state.users.loading
         }
 
-        fetchData() {
-            fetch( 'https://jsonplaceholder.typicode.com/users' )
-                .then( res => res.json() )
-                .then( res => this.users = res )
+        created() {
+            console.log( 'dispatch', FETCH_USERS )
+            this.$store.dispatch( FETCH_USERS )
         }
     }
 </script>
+
+<style scoped>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 100px;
+        min-height: 100px;
+        max-width: 320px;
+    }
+
+    .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .preloader {
+        flex: 0 0 24px;
+    }
+</style>

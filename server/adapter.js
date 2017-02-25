@@ -9,7 +9,7 @@ const fixtures = {
 
 module.exports = async ( resource ) => {
     if ( fixtures[ resource ] !== undefined ) {
-        await delay()
+        await delay( 750 )
         return fixtures[ resource ]
     }
     await 'error'

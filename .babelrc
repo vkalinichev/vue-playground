@@ -1,9 +1,11 @@
 {
     "presets": [
-        [ "latest", { "modules": false } ]
+        [ "latest", { "modules": false } ],
+        [ "stage-0" ]
     ],
     "plugins": [
-        "transform-decorators-legacy",
-        "transform-class-properties"
+        "transform-async-to-generator",
+        "transform-class-properties",
+        "transform-decorators-legacy"
     ]
 }

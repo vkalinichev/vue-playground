@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="item">
         <span class="name">{{ user.name }}</span>
         <a class="email" :href="user.email">{{ user.email | lower }}</a>
     </div>
@@ -24,6 +24,10 @@
 </script>
 
 <style scoped>
+    .item {
+
+    }
+
     .name {
         color: black
     }

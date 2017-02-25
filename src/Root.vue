@@ -8,11 +8,6 @@
                 <router-link to="/settings">Settings</router-link>
             </menu>
         </header>
-        <div>
-            Counter: {{ count }}
-            <button @click="increment">+</button>
-            <button @click="decrement">-</button>
-        </div>
         <router-view/>
     </div>
 </template>
@@ -20,22 +15,9 @@
 <script>
     import Vue from 'vue'
     import Component from 'vue-class-component'
-    import { increment, decrement } from './constants/mutations'
 
     @Component
     export default class Root extends Vue {
-
-        get count() {
-            return this.$store.state.count
-        }
-
-        increment() {
-            this.$store.commit( increment )
-        }
-
-        decrement() {
-            this.$store.commit( decrement )
-        }
     }
 </script>
 

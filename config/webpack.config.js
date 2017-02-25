@@ -17,7 +17,7 @@ const devServerConfig = require( './webpack.dev-server.config' )
 const myVueLoader = require( './my-vue-loader' )
 
 module.exports = createConfig( [
-    entryPoint( './src/index.js' ),
+    entryPoint( [ 'babel-polyfill', './src/index.js' ] ),
     setOutput( './build/app.js' ),
     babel(),
     addPlugins( plugins.basePlugins ),
