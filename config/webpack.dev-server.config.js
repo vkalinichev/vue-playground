@@ -2,7 +2,14 @@ const config = require( './config' )
 
 module.exports = {
 
-    port: config.devServerPort,
+    port: config.FrontendServerPort,
+
+    proxy: {
+        "/api": {
+            target: `http://localhost:${ config.BackendServerPort }`,
+            secure: false
+        }
+    },
 
     stats: {
         colors: true,

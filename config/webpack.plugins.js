@@ -12,7 +12,7 @@ exports.basePlugins = [
 ]
 
 exports.developmentPlugins = [
-    new OpenBrowserPlugin( { url: `http://localhost:${ config.devServerPort }` } )
+    new OpenBrowserPlugin( { url: `http://localhost:${ config.FrontendServerPort }` } )
 ]
 
 exports.productionPlugins = [
