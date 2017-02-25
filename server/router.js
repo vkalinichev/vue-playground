@@ -1,20 +1,13 @@
 const Router = require( 'koa-router' )
 const router = new Router()
-const { BackendServerDelay } = require( '../config/config' )
+const users = require( './routes/users' )
 
 module.exports = router
 
-const delay = ( ms ) => new Promise( resolve => setTimeout( resolve, ms || BackendServerDelay ) )
+router.use( '/api/users', users.routes(), users.allowedMethods() )
 
 router.get( '/', async ( ctx, next ) => {
-    await delay()
     ctx.body = 'koa 2'
-    await next()
-} )
-
-router.get( '/api', async ( ctx, next ) => {
-    await delay()
-    ctx.body = 'koa api'
     await next()
 } )
 
