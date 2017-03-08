@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Index from '../components/Index.vue'
+import Auth from '../components/Auth.vue'
 import UsersList from '../components/UsersList.vue'
 import User from '../components/UserItem.vue'
 import Settings from '../components/Settings.vue'
@@ -14,6 +15,7 @@ export default new Router( {
 
     routes: [
         { path: '/', component: Index },
+        { path: '/auth', component: Auth },
         { path: '/users', component: UsersList },
         { path: '/users/:id', component: User },
         { path: '/settings', component: Settings }

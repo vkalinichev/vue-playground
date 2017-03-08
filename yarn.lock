@@ -3104,7 +3104,7 @@ loader-runner@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
-loader-utils@^0.2.10, loader-utils@^0.2.16, loader-utils@~0.2.2, loader-utils@~0.2.5:
+loader-utils@^0.2.16, loader-utils@~0.2.2, loader-utils@~0.2.5:
   version "0.2.17"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-0.2.17.tgz#f86e6374d43205a6e6c60e9196f17c0299bfb348"
   dependencies:
@@ -3879,7 +3879,7 @@ postcss-filter-plugins@^2.0.0:
     postcss "^5.0.4"
     uniqid "^4.0.0"
 
-postcss-load-config@^1.2.0:
+postcss-load-config@^1.1.0, postcss-load-config@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-1.2.0.tgz#539e9afc9ddc8620121ebf9d8c3673e0ce50d28a"
   dependencies:
@@ -5141,11 +5141,11 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-class-component@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-4.4.0.tgz#cf6081475294eb7236bdf7cf75016803d4d98537"
+vue-class-component@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-5.0.0.tgz#6cc52502fa40a05100ffc4cf2dfa3a3f849b8e0b"
 
-vue-hot-reload-api@^2.0.1:
+vue-hot-reload-api@^2.0.11:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.11.tgz#bf26374fb73366ce03f799e65ef5dfd0e28a1568"
 
@@ -5153,19 +5153,20 @@ vue-i18n@^5.0.2:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-5.0.3.tgz#b6d96cc832604237e6139de471e0d4c820aedbed"
 
-vue-loader@^10.3.0:
-  version "10.3.0"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-10.3.0.tgz#436421736e9ad0f1c481330327c376963db86a19"
+vue-loader@^11.1.4:
+  version "11.1.4"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-11.1.4.tgz#d399b0ee10b34f2e41183b1e52255c4ab9f1f845"
   dependencies:
     consolidate "^0.14.0"
     hash-sum "^1.0.2"
     js-beautify "^1.6.3"
-    loader-utils "^0.2.10"
+    loader-utils "^1.0.2"
     lru-cache "^4.0.1"
     postcss "^5.0.10"
+    postcss-load-config "^1.1.0"
     postcss-selector-parser "^2.0.0"
     source-map "^0.5.6"
-    vue-hot-reload-api "^2.0.1"
+    vue-hot-reload-api "^2.0.11"
     vue-style-loader "^2.0.0"
     vue-template-es2015-compiler "^1.2.2"
 

@@ -4,7 +4,7 @@
         <div class="container">
             <preloader v-if="loading" class="preloader"/>
             <ul v-else class="list">
-                <user-item v-for="user in users" :user="user"/>
+                <user-item v-for="user in users" :user="user" :key="user.name"/>
             </ul>
         </div>
     </div>
@@ -16,13 +16,7 @@
     import Preloader from './Preloader.vue'
     import Component from 'vue-class-component'
 
-
-    import {
-        FETCH_USERS,
-        FETCH_USERS_COMPLETED,
-        FETCH_USERS_ERROR,
-        FETCH_USERS_REQUEST
-    } from '../constants/actions'
+    import { FETCH_USERS } from '../constants/actions'
 
     @Component({
         name: 'UsersList',
@@ -41,7 +35,6 @@
         }
 
         created() {
-            console.log( 'dispatch', FETCH_USERS )
             this.$store.dispatch( FETCH_USERS )
         }
     }
