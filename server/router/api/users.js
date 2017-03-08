@@ -1,13 +1,14 @@
 const Router = require( 'koa-router' )
 const users = new Router()
-const db = require( '../adapter' )
+const db = require( '../../adapter' )
 
-users.get('/', async (ctx, next) => {
+module.exports = users
+
+.get('/', async ctx =>
     ctx.body = await db( 'users' )
-    await next()
-} )
+)
 
-users.get('/:name', async (ctx, next) => {
+.get('/:name', async ctx => {
     const data = await db( 'users' )
     const result = data.find( user => user.name === ctx.params.name )
 
@@ -16,7 +17,4 @@ users.get('/:name', async (ctx, next) => {
     } else {
         ctx.status = 404
     }
-    await next()
 } )
-
-module.exports = users

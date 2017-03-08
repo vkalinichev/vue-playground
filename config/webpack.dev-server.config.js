@@ -4,12 +4,11 @@ module.exports = {
 
     port: config.FrontendServerPort,
 
-    proxy: {
-        "/api": {
-            target: `http://localhost:${ config.BackendServerPort }`,
-            secure: false
-        }
-    },
+    proxy: [ {
+        context: ['/api', '/login', '/logout'],
+        target: `http://localhost:${ config.BackendServerPort }`,
+        secure: false
+    } ],
 
     stats: {
         colors: true,

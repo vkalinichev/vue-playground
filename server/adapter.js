@@ -12,5 +12,5 @@ module.exports = async ( resource ) => {
         await delay( 750 )
         return fixtures[ resource ]
     }
-    await 'error'
+    return 'error'
 }
