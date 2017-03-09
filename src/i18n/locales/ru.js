@@ -1,6 +1,6 @@
 export default {
     app: {
-        title: 'Простой пример Vue-приложения',
+        title: 'Игровая',
     },
     message: {
         hello: 'привет, мир'

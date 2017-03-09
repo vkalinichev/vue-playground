@@ -8,6 +8,7 @@ module.exports = login
     passport.authenticate( 'local', async ( err, user ) => {
         if ( user ) {
             ctx.login( user )
+            ctx.status = 200
         } else {
             ctx.throw( 401 )
         }

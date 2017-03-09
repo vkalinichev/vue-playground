@@ -14,8 +14,8 @@
         width: 24px;
         height: 24px;
         border-radius: 100%;
-        border: 1px solid hsla( 0, 0%, 0%, .1 );
-        border-top-color: hsla( 200, 100%, 50%, .5 );
+        border: 1px solid hsla( 0, 0%, 0%, .05 );
+        border-top-color: hsla( 260, 100%, 50%, .5 );
         /*border-right-color: hsla( 0, 0%, 0%, .2 );*/
         animation: spin .66s linear infinite;
     }

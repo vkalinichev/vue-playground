@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Users list</h2>
+        <h2 class="pagename">Users list</h2>
         <div class="container">
             <preloader v-if="loading" class="preloader"/>
             <ul v-else class="list">
@@ -49,6 +49,12 @@
         min-width: 100px;
         min-height: 100px;
         max-width: 320px;
+    }
+
+    .pagename {
+        display: inline-block;
+        box-shadow: 0 0.02em #bbb;
+        transition: box-shadow .15s ease-in-out;
     }
 
     .list {

@@ -1,3 +1,4 @@
+const { blue, magenta, bold } = require( 'chalk' )
 const bodyParser = require( 'koa-bodyparser' )
 const convert = require( 'koa-convert' )
 const Koa = require( 'koa' )
@@ -28,4 +29,9 @@ app
 .use( router.routes() )
 .use( router.allowedMethods() )
 
-.listen( BackendServerPort )
+.listen( BackendServerPort, () =>
+    console.log(
+        blue( 'Server listening on' ),
+        magenta( `http://localhost:${ bold( BackendServerPort ) }` )
+    )
+)

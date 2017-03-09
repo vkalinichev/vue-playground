@@ -1,6 +1,6 @@
 export default {
     app: {
-        title: 'シンプルなVUEアプリの例',
+        title: '遊び場',
     },
     message: {
         hello: 'こんにちは、世界'
