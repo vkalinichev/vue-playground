@@ -55,7 +55,7 @@
     "babel-preset-latest": "^6.22.0",
     "eslint": "^3.15.0",
     "html-webpack-plugin": "^2.28.0",
-    "open-browser-webpack-plugin": "^0.0.4",
+    "open-browser-webpack-plugin": "^0.0.5",
     "uniq-port": "^1.0.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
