@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Index from '../components/App.vue'
-import Auth from '../components/Auth.vue'
+import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import User from '../components/UserItem.vue'
 import UsersList from '../components/UsersList.vue'
@@ -15,7 +15,7 @@ export default new Router( {
     linkActiveClass: 'active',
 
     routes: [ {
-        path: '/auth', component: Auth
+        path: '/login', component: Login
     }, {
         path: '/', component: Index,
 

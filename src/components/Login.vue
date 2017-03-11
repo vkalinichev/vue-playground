@@ -16,8 +16,8 @@
     import Component from 'vue-class-component'
     import { LOG_IN } from '../constants/actions'
 
-    @Component({ name: 'Auth' })
-    export default class Auth extends Vue {
+    @Component({ name: 'Login' })
+    export default class Login extends Vue {
 
         username = 'test'
         password = 'test'

@@ -22,6 +22,27 @@ import {
 
 Vue.use( Vuex )
 
+
+async function api ( { commit, dispatch }, url, [ START, SUCCESS, FAILED ], options = {} ) {
+    commit( START )
+    const response = await fetch( url, {
+        credentials: 'same-origin',
+        ...options
+    } )
+
+    if ( response.status === 401 ) {
+        return dispatch( FORCE_AUTH )
+    }
+
+    try {
+        const json = await response.json()
+        commit( SUCCESS, json )
+    } catch ( error ) {
+        console.warn( error )
+        commit( FAILED, error )
+    }
+}
+
 export default ( locales ) => new Vuex.Store( {
 
     state: {
@@ -95,86 +116,33 @@ export default ( locales ) => new Vuex.Store( {
     },
 
     actions: {
-        [ LOG_IN ]: async ( { commit, dispatch }, data ) => {
-            commit( START_LOGIN )
-
-            const response = await fetch( '/login', {
+        [ LOG_IN ]: async ( store, data ) => {
+            const actions = [ START_LOGIN, COMPLETE_LOGIN, FAIL_LOGIN ]
+            const options = {
                 method: 'POST',
                 body: JSON.stringify( data ),
-                credentials: 'same-origin',
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            } )
-
-            if ( response.status === 401 ) {
-                return dispatch( FORCE_AUTH )
+                headers: { "Content-Type": "application/json" }
             }
-
-            try {
-                const user = await response.json()
-                commit( COMPLETE_LOGIN, user )
-                router.push( '/' )
-            } catch ( error ) {
-                console.warn( error )
-                commit( FAIL_LOGIN, error )
-            }
+            await api( store, '/login', actions, options )
+            router.push( '/' )
         },
 
-        [ LOG_OUT ]: async ( { commit } ) => {
-            commit( START_LOGOUT )
-
-            await fetch( '/logout', {
-                method: 'POST',
-                credentials: 'same-origin'
-            } )
-
-            router.push( '/auth' )
-
-            commit( COMPLETE_LOGOUT )
+        [ LOG_OUT ]: async ( store ) => {
+            const actions = [ START_LOGOUT, COMPLETE_LOGOUT, COMPLETE_LOGOUT ]
+            await api( store, '/logout', actions, { method: 'POST' } )
+            store.dispatch( FORCE_AUTH )
         },
 
         [ FORCE_AUTH ]: async() => {
-            router.push( '/auth' )
+            router.push( '/login' )
         },
 
-
-        [ CHECK_AUTH ]: async( { commit, dispatch } ) => {
-            commit( START_AUTH )
-
-            const response = await fetch( '/api/auth', {
-                credentials: 'same-origin'
-            } )
-
-            if ( response.status === 401 ) {
-                return dispatch( FORCE_AUTH )
-            }
-
-            try {
-                const user = await response.json()
-                commit( COMPLETE_AUTH, user )
-            } catch ( error ) {
-                commit( FAIL_AUTH, error )
-            }
+        [ CHECK_AUTH ]: async( store ) => {
+            await api( store, '/api/auth', [ START_AUTH, COMPLETE_AUTH, FAIL_AUTH ] )
         },
 
-        [ FETCH_USERS ]: async( { commit, dispatch } ) => {
-            commit( FETCH_USERS_REQUEST )
-
-            const response = await fetch( '/api/users', {
-                credentials: 'same-origin'
-            } )
-
-            if ( response.status === 401 ) {
-                return dispatch( FORCE_AUTH )
-            }
-
-            try {
-                const users = await response.json()
-                commit( FETCH_USERS_COMPLETED, users )
-            } catch ( error ) {
-                commit( FETCH_USERS_ERROR, error )
-            }
+        [ FETCH_USERS ]: async( store ) => {
+            await api( store, '/api/users', [ FETCH_USERS_REQUEST, FETCH_USERS_COMPLETED, FETCH_USERS_ERROR ] )
         }
     }
 
