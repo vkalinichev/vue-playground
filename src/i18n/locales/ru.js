@@ -4,5 +4,10 @@ export default {
     },
     message: {
         hello: 'привет, мир'
+    },
+    menu: {
+        home: 'Главная',
+        users: 'Пользователи',
+        settings: 'Настройки'
     }
 }

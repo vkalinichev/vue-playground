@@ -1,26 +1,13 @@
 <template>
-    <div class="layout">
-        <v-header class="header"/>
-        <router-view class="viewport"/>
-        <v-footer class="footer"/>
-    </div>
+    <router-view class="root-viewport"/>
 </template>
 
 <script>
     import Vue from 'vue'
     import Component from 'vue-class-component'
-    import VHeader from './components/Header.vue'
-    import VFooter from './components/Footer.vue'
 
-    @Component({
-        name: 'Root',
-        components: {
-            VHeader,
-            VFooter
-        }
-    })
-    export default class Root extends Vue {
-    }
+    @Component({ name: 'Root' })
+    export default class Root extends Vue {}
 </script>
 
 <style>
@@ -35,7 +22,7 @@
         color: #333;
         box-sizing: border-box;
         cursor: default;
-        user-select: none;
+        /*user-select: none;*/
     }
 
     body {
@@ -54,23 +41,10 @@
     }
 </style>
 
-<style scoped>
-    .layout {
-        height: 100%;
+<style>
+    .root-viewport {
+        height: 100vh;
         display: flex;
         flex-direction: column;
-    }
-
-    .header {
-        flex-shrink: 0;
-    }
-
-    .viewport {
-        flex: 1;
-        padding: 20px;
-    }
-
-    .footer {
-        flex-shrink: 0;
     }
 </style>

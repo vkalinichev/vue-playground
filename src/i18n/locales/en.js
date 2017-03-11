@@ -4,5 +4,10 @@ export default {
     },
     message: {
         hello: 'hello world'
+    },
+    menu: {
+        home: 'Home',
+        users: 'Users',
+        settings: 'Settings'
     }
 }

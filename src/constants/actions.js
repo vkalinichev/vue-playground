@@ -3,5 +3,17 @@ export const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST'
 export const FETCH_USERS_ERROR = 'FETCH_USERS_ERROR'
 export const FETCH_USERS_COMPLETED = 'FETCH_USERS_COMLETED'
 
+export const START_AUTH = 'START_AUTH'
+export const COMPLETE_AUTH = 'COMPLETE_AUTH'
+export const FAIL_AUTH = 'FAIL_AUTH'
+export const CHECK_AUTH = 'CHECK_AUTH'
 export const FORCE_AUTH = 'FORCE_AUTH'
+
 export const LOG_IN = 'LOG_IN'
+export const START_LOGIN = 'START_LOGIN'
+export const COMPLETE_LOGIN = 'COMPLETE_LOGIN'
+export const FAIL_LOGIN = 'FAIL_LOGIN'
+
+export const LOG_OUT = 'LOG_OUT'
+export const START_LOGOUT = 'START_LOGOUT'
+export const COMPLETE_LOGOUT = 'COMPLETE_LOGOUT'

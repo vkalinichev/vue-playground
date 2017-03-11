@@ -9,7 +9,7 @@
             </menu>
         </div>
         <div class="cell links">
-            <a class="link" href="/profile" @click.prevent="profile">Vladimir Kalinichev</a>
+            <a class="link" href="/profile" @click.prevent="profile">{{ user.username }}</a>
             <a class="link" href="/logout" @click.prevent="logout">Logout</a>
         </div>
     </div>
@@ -18,15 +18,20 @@
 <script>
     import Vue from 'vue'
     import Component from 'vue-class-component'
+    import { LOG_OUT } from '../constants/actions'
 
     @Component({ name: 'Header' })
     export default class Header extends Vue {
+        get user() {
+            return this.$store.state.user
+        }
+
         profile() {
             console.log( 'profile' )
         }
 
         logout() {
-            console.log( 'logout' )
+            this.$store.dispatch( LOG_OUT )
         }
     }
 </script>
