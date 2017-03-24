@@ -1,6 +1,7 @@
 const { webpack } = require( '@webpack-blocks/webpack2' )
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' )
 const OpenBrowserPlugin = require( 'open-browser-webpack-plugin' )
+const DuplicatePlugin =require( 'duplicate-package-checker-webpack-plugin' )
 const config = require( './config' )
 
 exports.basePlugins = [
@@ -8,7 +9,8 @@ exports.basePlugins = [
     new HtmlWebpackPlugin( {
         inject: true,
         template: './src/index.html'
-    } )
+    } ),
+    new DuplicatePlugin()
 ]
 
 exports.developmentPlugins = [
