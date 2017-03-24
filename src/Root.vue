@@ -33,7 +33,6 @@
         color: #333;
         box-sizing: border-box;
         cursor: default;
-        /*user-select: none;*/
     }
 
     body {
@@ -49,6 +48,16 @@
 
     a {
         -webkit-user-drag: none;
+    }
+
+    button,
+    input {
+        font: inherit;
+        outline: none;
+    }
+
+    button {
+        cursor: pointer;
     }
 </style>
 

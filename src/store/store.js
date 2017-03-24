@@ -82,8 +82,10 @@ export default ( locales ) => new Vuex.Store( {
                 body: JSON.stringify( data ),
                 headers: { "Content-Type": "application/json" }
             }
-            await api( store, '/login', actions, options )
-            router.push( '/' )
+            const { status } = await api( store, '/login', actions, options )
+            if ( status === 200 ) {
+                router.push( '/' )
+            }
         },
 
         [ LOG_OUT ]: async ( store ) => {

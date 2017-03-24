@@ -10,7 +10,7 @@ async function api ( { commit, dispatch }, url, [ START, SUCCESS, FAILED ], opti
     } )
 
     if ( response.status === 401 ) {
-        return dispatch( FORCE_AUTH )
+        dispatch( FORCE_AUTH )
     }
 
     try {
@@ -20,4 +20,5 @@ async function api ( { commit, dispatch }, url, [ START, SUCCESS, FAILED ], opti
         console.warn( error )
         commit( FAILED, error )
     }
+    return response
 }
