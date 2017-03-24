@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/router'
+import api from './api'
+import { users } from './users'
 import {
-    FETCH_USERS,
-    FETCH_USERS_COMPLETED,
-    FETCH_USERS_ERROR,
-    FETCH_USERS_REQUEST,
     START_AUTH,
     COMPLETE_AUTH,
     FAIL_AUTH,
@@ -22,28 +20,11 @@ import {
 
 Vue.use( Vuex )
 
-
-async function api ( { commit, dispatch }, url, [ START, SUCCESS, FAILED ], options = {} ) {
-    commit( START )
-    const response = await fetch( url, {
-        credentials: 'same-origin',
-        ...options
-    } )
-
-    if ( response.status === 401 ) {
-        return dispatch( FORCE_AUTH )
-    }
-
-    try {
-        const json = await response.json()
-        commit( SUCCESS, json )
-    } catch ( error ) {
-        console.warn( error )
-        commit( FAILED, error )
-    }
-}
-
 export default ( locales ) => new Vuex.Store( {
+
+    modules: {
+        users: users
+    },
 
     state: {
         count: 0,
@@ -51,11 +32,6 @@ export default ( locales ) => new Vuex.Store( {
         user: {
             loggingIn: false,
             loggedIn: false
-        },
-        users: {
-            loading: false,
-            error: false,
-            items: []
         }
     },
 
@@ -95,24 +71,7 @@ export default ( locales ) => new Vuex.Store( {
             user.loggedIn = false
         },
         [ COMPLETE_LOGOUT ] ( ) {
-        },
-        [ FETCH_USERS_REQUEST ] ( state ) {
-            state.users.loading = true
-        },
-        [ FETCH_USERS_ERROR ] ( state, error ) {
-            console.error( error )
-            state.users = {
-                loading: false,
-                error: true
-            }
-        },
-        [ FETCH_USERS_COMPLETED ] ( state, users ) {
-            state.users = {
-                loading: false,
-                error: false,
-                items: users
-            }
-        },
+        }
     },
 
     actions: {
@@ -139,11 +98,8 @@ export default ( locales ) => new Vuex.Store( {
 
         [ CHECK_AUTH ]: async( store ) => {
             await api( store, '/api', [ START_AUTH, COMPLETE_AUTH, FAIL_AUTH ] )
-        },
-
-        [ FETCH_USERS ]: async( store ) => {
-            await api( store, '/api/users', [ FETCH_USERS_REQUEST, FETCH_USERS_COMPLETED, FETCH_USERS_ERROR ] )
         }
+
     }
 
 } )
