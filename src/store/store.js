@@ -138,7 +138,7 @@ export default ( locales ) => new Vuex.Store( {
         },
 
         [ CHECK_AUTH ]: async( store ) => {
-            await api( store, '/api/auth', [ START_AUTH, COMPLETE_AUTH, FAIL_AUTH ] )
+            await api( store, '/api', [ START_AUTH, COMPLETE_AUTH, FAIL_AUTH ] )
         },
 
         [ FETCH_USERS ]: async( store ) => {

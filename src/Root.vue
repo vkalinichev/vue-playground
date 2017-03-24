@@ -4,10 +4,21 @@
 
 <script>
     import Vue from 'vue'
+    import { mapActions } from 'vuex'
     import Component from 'vue-class-component'
+    import { CHECK_AUTH } from './constants/actions'
 
-    @Component({ name: 'Root' })
-    export default class Root extends Vue {}
+    @Component({
+        name: 'Root',
+        methods: {
+            ...mapActions( { checkAuth: CHECK_AUTH } )
+        }
+    })
+    export default class Root extends Vue {
+        created() {
+            this.checkAuth()
+        }
+    }
 </script>
 
 <style>

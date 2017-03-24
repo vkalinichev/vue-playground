@@ -12,6 +12,7 @@
 
 <script>
     import Vue from 'vue'
+    import { mapActions, mapState } from 'vuex'
     import User from './UserItem.vue'
     import Preloader from './Preloader.vue'
     import Component from 'vue-class-component'
@@ -23,19 +24,20 @@
         components: {
             'user-item': User,
             'preloader': Preloader
+        },
+        computed: {
+            ...mapState( {
+                users: ( { users } ) => users.items,
+                loading: ( { users } ) => users.loading
+            } )
+        },
+        methods: {
+            ...mapActions( { fetch: FETCH_USERS } )
         }
     })
     export default class UsersList extends Vue {
-
-        get users() {
-            return this.$store.state.users.items
-        }
-        get loading() {
-            return this.$store.state.users.loading
-        }
-
         created() {
-            this.$store.dispatch( FETCH_USERS )
+            this.fetch()
         }
     }
 </script>
